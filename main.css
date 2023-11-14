@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +10,7 @@ body {
   background-color: rgb(45, 45, 49);
   color: white;
   height: 100vh;
+  font-family: "Lato", sans-serif;
 }
 
 .center {
@@ -39,9 +42,21 @@ body {
   min-height: 80px;
   background-color: rgb(104, 104, 104);
   border-radius: 15px;
+  font-size: clamp(16px, 2vw, 40px);
+  justify-content: end;
+  padding-right: 1.5%;
 }
 
 .numButton {
+  font-size: clamp(16px, 2vw, 40px);
+  width: 20%;
+  height: 100%;
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.signButton {
   font-size: clamp(16px, 2vw, 40px);
   width: 20%;
   height: 100%;
