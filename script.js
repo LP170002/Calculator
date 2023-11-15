@@ -2,36 +2,41 @@
 
 const display = document.querySelector(`.display`);
 const buttons = document.querySelectorAll(`.num`);
-const signs = document.querySelectorAll(`.sign`);
-const clearButtons = document.querySelectorAll(`.clearButtons`);
+const add = document.querySelectorAll(`.add`);
 const equal = document.querySelector(`.equal`);
-let isPlus = false;
-const firstNum = [];
-const secondNum = [];
+const clear = document.querySelector(`.clear`);
+let enteredNum = ``;
+let equationArr = [];
+let sum = 0;
 
 //* NUMBER BUTTONS
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener(`click`, function () {
-    if (!isPlus) {
-      firstNum.push(Number(buttons[i].textContent));
-      console.log(firstNum);
-    } else if (isPlus) {
-      secondNum.push(Number(buttons[i].textContent));
-      console.log(secondNum);
-    }
+    enteredNum += buttons[i].textContent;
+    display.textContent = enteredNum;
   });
 }
 
-//* PLUS/AC BUTTON
-for (let i = 0; i < clearButtons.length; i++) {
-  clearButtons[i].addEventListener(`click`, function () {
-    isPlus = true;
+//* PLUS
+for (let i = 0; i < add.length; i++) {
+  add[i].addEventListener(`click`, function () {
+    equationArr.push(enteredNum);
+    enteredNum = "";
     display.textContent = ``;
   });
 }
 
 //*EQUAL BUTTON
 equal.addEventListener(`click`, function () {
-  const sum = firstNum.concat(secondNum);
-  console.log(`sum: ${sum.reduce((a, b) => a + b)}`);
+  equationArr.push(enteredNum);
+  for (let i = 0; i < equationArr.length; i++) {
+    sum += Number(equationArr[i]);
+  }
+  display.textContent = sum;
+});
+
+//* CLEAR BUTTON
+clear.addEventListener(`click`, function () {
+  equationArr.splice(0, equationArr.length);
+  display.textContent = ``;
 });
